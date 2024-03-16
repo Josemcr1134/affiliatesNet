@@ -1,0 +1,42 @@
+.bg-dates-1 {
+    background-image: url('../../../../assets/images/dates1.png') !important;
+    background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
+}
+.bg-dates-2 {
+    background-image: url('../../../../assets/images/dates2.png') !important;
+    background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
+}
+.bg-dates-3 {
+    background-image: url('../../../../assets/images/dates3.png') !important;
+    background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
+}
+.bg-dates-1:hover {
+    background-image: url('../../../../assets/images/date1hover.png') !important;
+    background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
+}
+.bg-dates-2:hover {
+    background-image: url('../../../../assets/images/dates2hover.png') !important;
+    background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
+}
+.bg-dates-3:hover {
+    background-image: url('../../../../assets/images/date3hover.png') !important;
+    background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
+}
+
+
+.bg-future-dates { 
+  background-color: #FDFAFF; 
+  border: 1px solid #F2EAFF !important;
+}

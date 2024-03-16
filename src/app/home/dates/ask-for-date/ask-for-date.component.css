@@ -1,0 +1,29 @@
+.nav-tabs .tab-item.active {
+    color: #0AB5CB !important;
+    border-bottom: #0AB5CB 2px solid !important;
+}
+
+.body-symptoms {
+    background-color: #0AB5CB;
+    color: white !important;
+}
+
+.bg-image {
+    background-image: url('../../../../assets/images/bg-specialist-heade.png') !important;
+    background-position: center;
+    /* Center the image */
+    background-repeat: no-repeat;
+    /* Do not repeat the image */
+    background-size: cover;
+    /* Resize the background image to cover the entire container */
+}
+
+.bg-qualification {
+    background-image: url('../../../../assets/images/bg-qualification.png') !important;
+    background-position: center;
+    /* Center the image */
+    background-repeat: no-repeat;
+    /* Do not repeat the image */
+    background-size: cover;
+    /* Resize the background image to cover the entire container */
+}

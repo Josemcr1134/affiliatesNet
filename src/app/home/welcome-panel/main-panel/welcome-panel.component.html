@@ -1,0 +1,229 @@
+<!-- Main 2 column grid -->
+<div class="grid grid-cols-1 gap-4 items-start lg:grid-cols-3 lg:gap-8 mt-4">
+    <!-- Left column -->
+    <div class="grid grid-cols-1 gap-4 lg:col-span-2">
+        <!-- Welcome panel -->
+        <section aria-labelledby="profile-overview-title">
+            <div class="rounded-lg bg-image object-cover overflow-hidden shadow">
+                <h2 class="sr-only" id="profile-overview-title">Profile Overview</h2>
+                <div class="bg-image p-6">
+                    <div class="sm:flex sm:items-center sm:justify-between">
+                        <div class="sm:flex sm:space-x-5">
+                            <div class="flex-shrink-0">
+                                <img class="mx-auto h-20 w-20 rounded-full" *ngIf="avatar.length > 5" [src]="avatar" alt="">
+                                <img class="mx-auto h-20 w-20 rounded-full" *ngIf="avatar.length === 4" src="assets/images/patient.png" alt="">
+                            </div>
+                            <div class="mt-4 text-center sm:mt-0 sm:pt-1 sm:text-left">
+                                <p class="text-sm font-medium text-white">Bienvenid@ de nuevo,</p>
+                                <p class="text-xl font-bold text-white sm:text-2xl">{{first_name || 'Nombre'}} {{last_name || 'Apellido'}} </p>
+                                <p class="text-sm font-medium text-white">Afiliado en Netcare</p>
+                            </div>
+                        </div>
+                        <div class="mt-5 flex justify-center sm:mt-0">
+                            <a  *ngIf="bundle !== '100%'"[routerLink]="['/Home/Dates/CompleteRegister']"  class="flex justify-center mx-2 items-center px-4 py-2 border  shadow-sm text-sm font-medium hover:font-semibold rounded-md text-button bg-white "> Completar cuenta </a>
+                            <a  *ngIf="bundle === '100%'"[routerLink]="['/Home/Dates/AskForADate']"  class="flex justify-center mx-2 items-center px-4 py-2 border  shadow-sm text-sm font-medium hover:font-semibold rounded-md text-button bg-white "> Solicitar cita </a>
+                            <a [routerLink]="['/Home/Dates/MyDates']"  class="flex justify-center mx-2 items-center px-4 py-2 border  shadow-sm text-sm font-medium hover:font-semibold rounded-md text-button bg-white "> Mis citas </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="border-t bg grid grid-cols-1  sm:grid-cols-3 sm:divide-x">
+                    <div class="px-6 py-5 text-sm font-medium text-center">
+                        <span class="text-white">{{completed_appointment}} </span>
+                        <span class="text-white">Citas completadas</span>
+                    </div>
+                    <div class="px-6 py-5 text-sm font-medium text-center">
+                        <span class="text-white">{{consulted_specialty}} </span>
+                        <span class="text-white">Especialidades consultadas</span>
+                    </div>
+                    <div class="px-6 py-5 text-sm font-medium text-center">
+                        <span class="text-white">{{pending_appointment}} </span>
+                        <span class="text-white">Citas pendientes</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Actions panel -->
+        <section aria-labelledby="quick-links-title" *ngIf="bundle === '100%'">
+            <div class="rounded-lg bg-gray-200 overflow-hidden shadow divide-y divide-gray-200 sm:divide-y-0 sm:grid sm:grid-cols-2 sm:gap-px">
+                <div [routerLink]="['/Home/Dates/MyDates']" class="cursor-pointer rounded-tl-lg rounded-tr-lg sm:rounded-tr-none relative group bg-white p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-cyan-500">
+                    <div class="flex flex-nowrap">
+                        <span class="rounded-lg inline-flex p-3 bg-svg   ring-4 ring-white" style="">
+                        <!-- Heroicon name: outline/clock -->
+                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        </span>
+                        <h3 class="text-lg font-medium mb-2 mx-2">
+                            <a class="focus:outline-none font-bold text-base text-gray-500">
+                                <!-- Extend touch target to entire panel -->
+                                <span class="absolute inset-0 " aria-hidden="true">  </span>Mis citas
+                            </a>
+                        </h3>
+                    </div>
+                    <div class="mt-8">
+                        <h3 class="">
+                            <a class="focus:outline-none font-semibold text-base text-gray-500">
+                                <!-- Extend touch target to entire panel -->
+                                <span class="absolute inset-0 " aria-hidden="true">  </span> Próxima cita
+                            </a>
+                        </h3>
+                        <div class="bg-white py-2" *ngIf="appointment_date.length" >
+                            <div class="sm:flex sm:items-center justify-between">
+                                <div class="sm:flex sm:space-x-5 px-3">
+                                    <div class="flex-shrink-0">
+                                        <img class="mx-auto h-20 w-20 rounded-full" src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+                                    </div>
+                                    <div class="mt-4 text-center sm:mt-0 sm:pt-1 sm:text-left">
+
+                                        <p class="text-xl font-bold text-gray-900 sm:text-2xl">{{medic_name}} </p>
+                                        <p class="text-sm font-medium text-gray-600">Otorrino</p>
+                                        <p class="text-sm font-medium text-gray-400" *ngIf="appointment_type">Telemedicina</p>
+                                        <p class="text-sm font-medium text-gray-400" *ngIf="appointment_type === false">{{appointment_location}} <br> {{appointment_location_detail}} </p>
+                                    </div>
+                                </div>
+                                <div class="sm:flex sm:space-x-5 pl-3">
+
+                                    <div class=" text-center sm:mt-0 sm:pt-1 sm:text-left ">
+
+                                        <p class="text-sm font-medium text-gray-600">Viernes</p>
+                                        <p class="text-xl font-bold text-gray-900 sm:text-2xl">{{appointment_date | slice:8:10}}</p>
+                                        <p class="text-sm font-medium text-gray-400">Mes {{appointment_date | slice:5:7}} </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="py-2" *ngIf="appointment_date.length === 0">
+                          <div class="rounded-md bg-yellow-50 p-4">
+                            <div class="flex">
+                              <div class="flex-shrink-0">
+                                <!-- Heroicon name: mini/exclamation-triangle -->
+                                <svg class="h-5 w-5 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                  <path fill-rule="evenodd" d="M8.485 3.495c.673-1.167 2.357-1.167 3.03 0l6.28 10.875c.673 1.167-.17 2.625-1.516 2.625H3.72c-1.347 0-2.189-1.458-1.515-2.625L8.485 3.495zM10 6a.75.75 0 01.75.75v3.5a.75.75 0 01-1.5 0v-3.5A.75.75 0 0110 6zm0 9a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd" />
+                                </svg>
+                              </div>
+                              <div class="ml-3">
+                                <h3 class="text-sm font-medium text-yellow-800">Oooops</h3>
+                                <div class="mt-2 text-sm text-yellow-700">
+                                  <p>No tienes una cita agendada.</p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                        </div>
+                    </div>
+                    <span [routerLink]="['/Home/Dates/MyDates']" class=" cursor-pointer pointer-events-none absolute top-6 right-6 text-gray-300 group-hover:text-gray-400" aria-hidden="true">
+                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M20 4h1a1 1 0 00-1-1v1zm-1 12a1 1 0 102 0h-2zM8 3a1 1 0 000 2V3zM3.293 19.293a1 1 0 101.414 1.414l-1.414-1.414zM19 4v12h2V4h-2zm1-1H8v2h12V3zm-.707.293l-16 16 1.414 1.414 16-16-1.414-1.414z" />
+                        </svg>
+                    </span>
+                </div>
+                <div class="relative group bg-white p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-cyan-500">
+                    <div class="flex flex-nowrap">
+                        <div>
+                            <span class="rounded-lg inline-flex p-3  bg-svg   ring-4 ring-white">
+                                <!-- Heroicon name: outline/cash -->
+                                <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" />
+                                </svg>
+                            </span>
+                        </div>
+                        <h3 class="text-lg font-medium mx-2 align-middle">
+                            <a [routerLink]="['/Home/MedicalFormula/UserMedicalFormula']"   class="focus:outline-none font-bold text-base text-gray-500">
+                                <!-- Extend touch target to entire panel -->
+                                <span class="absolute inset-0" aria-hidden="true"></span> Ordenamientos
+                            </a>
+                        </h3>
+                    </div>
+
+                    <div class="mt-8">
+
+                        <p class="mt-2 text-sm text-gray-500" *ngIf="countOrdering > 0">Tienes ordenamientos en bandeja</p>
+                        <p class="mt-2 text-sm text-gray-500" *ngIf="countOrdering === 0">No tienes ordenamientos pendientes</p>
+                    </div>
+                    <span class="pointer-events-none absolute top-6 right-6 text-gray-300 group-hover:text-gray-400" aria-hidden="true">
+                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M20 4h1a1 1 0 00-1-1v1zm-1 12a1 1 0 102 0h-2zM8 3a1 1 0 000 2V3zM3.293 19.293a1 1 0 101.414 1.414l-1.414-1.414zM19 4v12h2V4h-2zm1-1H8v2h12V3zm-.707.293l-16 16 1.414 1.414 16-16-1.414-1.414z" />
+                        </svg>
+                    </span>
+                </div>
+            </div>
+        </section>
+    </div>
+    <!-- Right column -->
+    <div class="grid grid-cols-1 gap-4">
+        <!-- Register Info -->
+        <section aria-labelledby="recent-hires-title">
+            <div class="rounded-lg bg-white overflow-hidden shadow">
+                <div class="p-6">
+                    <h2 class="text-lg font-medium  text-primary" id="recent-hires-title">{{first_name || 'Nombre'}} {{last_name || 'Apellido'}}</h2>
+                    <div class="flow-root mt-6">
+                        <ul role="list" class="-my-5 divide-y divide-gray-200">
+                            <li class="py-4">
+                                <div class="flex items-center space-x-4">
+                                    <div class="flex-1 min-w-0">
+                                        <span class="flex justify-between " style="margin-bottom: 20px;">
+                                            <p class="text-lg font-bold mr-2 text-blue-400  ">{{bundle}}</p>
+                                            <div class="w-full  h-1 mb-6">
+                                                <p class="text-base font-bold text-gray-600 truncate">Proceso de registro</p>
+                                                <div class="bg-blue-400 h-1" [ngStyle]="{'width': bundle}"></div>
+                                            </div>
+                                        </span>
+                                        <p class="text-sm text-gray-500 ">Completa tu proceso de registro y asì obtendràs todos los beneficios de nuestra plataforma</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="py-4">
+                                <div class="flex items-center space-x-4">
+                                    <div class="flex-1 min-w-0">
+                                        <span class="flex justify-between " style="margin-bottom: 20px;">
+                                            <p class="text-lg font-bold mr-2 text-blue-400  ">{{register_process}}</p>
+                                            <div class="w-full  h-1 mb-6">
+                                                <p class="text-base font-bold text-gray-600 truncate">Información general</p>
+                                                <div class="bg-blue-400 h-1" [ngStyle]="{'width': register_process}"></div>
+                                            </div>
+                                        </span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="py-4">
+                                <div class="flex items-center space-x-4">
+                                    <div class="flex-1 min-w-0">
+                                        <span class="flex justify-between " style="margin-bottom: 20px;">
+                                            <p class="text-lg font-bold mr-2 text-blue-400  ">{{financial_info}}</p>
+                                            <div class="w-full  h-1 mb-6">
+                                                <p class="text-base font-bold text-gray-600 truncate">Información financiera</p>
+                                                <div class="bg-blue-400 h-1" [ngStyle]="{'width': financial_info}"></div>
+                                            </div>
+                                        </span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="py-4">
+                                <div class="flex items-center space-x-4">
+                                    <div class="flex-1 min-w-0">
+                                        <span class="flex justify-between " style="margin-bottom: 20px;">
+                                            <p class="text-lg font-bold mr-2 text-blue-400  ">{{medical_info}}</p>
+                                            <div class="w-full  h-1 mb-6">
+                                                <p class="text-base font-bold text-gray-600 truncate">Información clínica</p>
+                                                <div class="bg-blue-400 h-1" [ngStyle]="{'width': medical_info}" ></div>
+                                            </div>
+                                        </span>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="mt-6">
+                        <a [routerLink]="['/Home/MyProfile']" routerLinkActive="router-link-active" class="w-full flex justify-center items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mx-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                              </svg> Ver perfil
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

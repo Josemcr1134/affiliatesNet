@@ -1,0 +1,20 @@
+
+.bg-image {
+    background-image: url('../../../../assets/images/bg-specialist-heade.png') !important;
+    background-position: center;
+    /* Center the image */
+    background-repeat: no-repeat;
+    /* Do not repeat the image */
+    background-size: cover;
+    /* Resize the background image to cover the entire container */
+}
+
+.bg-qualification {
+    background-image: url('../../../../assets/images/bg-qualification.png') !important;
+    background-position: center;
+    /* Center the image */
+    background-repeat: no-repeat;
+    /* Do not repeat the image */
+    background-size: cover;
+    /* Resize the background image to cover the entire container */
+}

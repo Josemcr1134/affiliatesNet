@@ -1,0 +1,28 @@
+.bg-gradient {
+    background: rgb(81, 40, 132);
+    background: linear-gradient(180deg, rgba(81, 40, 132, 1) 0%, rgba(11, 141, 175, 1) 100%);
+}
+
+.border-primary {
+    border-left: 3px dashed #512884 !important
+}
+
+
+.bg-image {
+    background-image: url('../../../../assets/images/doc1.jpg') !important;
+    background-position: center;
+    /* Center the image */
+    background-repeat: no-repeat;
+    /* Do not repeat the image */
+    background-size: cover;
+    /* Resize the background image to cover the entire container */
+}
+.bg-image-2 {
+    background-image: url('../../../../assets/images/doc2.jpg') !important;
+    background-position: center;
+    /* Center the image */
+    background-repeat: no-repeat;
+    /* Do not repeat the image */
+    background-size: cover;
+    /* Resize the background image to cover the entire container */
+}

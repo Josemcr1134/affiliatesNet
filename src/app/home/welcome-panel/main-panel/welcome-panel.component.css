@@ -1,0 +1,18 @@
+.bg {
+    background-color: #4FB3C8;
+    opacity: 82%
+}
+
+.text-button {
+    color: #4D2C7E;
+}
+
+.bg-svg {
+    background: linear-gradient(to right, #D9F7FF, #EFE2FF);
+    opacity: 100%;
+    color: #4D2C7E;
+}
+
+.bg-image {
+    background-image: url('../../../../assets/images/main.png') !important;
+}

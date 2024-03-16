@@ -1,0 +1,487 @@
+<div class="grid grid-cols-1 gap-4 lg:col-span-2">
+    <!-- Main action -->
+    <section aria-labelledby="profile-overview-title" >
+        <div class="rounded-lg  overflow-hidden ">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 " >
+                <h2 class=" text-lg leading-6 py-4 font-medium text-white ">Mis citas</h2>
+                <div class="mt-2 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 pb-3  "  style="padding-bottom: 3em; ">
+                    <!-- Ask for a date card -->
+                    <div class="bg-dates-1  overflow-hidden shadow rounded-lg h-full mx-2 cursor-pointer" *ngIf="complete_account === 100" [routerLink]="['/Home/Dates/AskForADate']" >
+                        <div class="p-5 ">
+                            <div class="flex items-center ">
+
+                                <div class=" p-4 text-center flex-1 " style="padding: 3em; ">
+                                    <dl>
+                                        <p class="text-xl font-bold  sm:text-2xl cursor-pointer " style="color: #fafafa; ">Solicitar cita</p>
+                                    </dl>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Specialties card -->
+                    <div class="bg-dates-2  overflow-hidden shadow rounded-lg h-full mx-2  cursor-pointer " *ngIf="complete_account === 100" [routerLink]="['/Home/Dates/AskForADate']">
+                        <div class="p-5 ">
+                            <div class="flex items-center ">
+
+                                <div class="ml-5 p-4 text-center flex-1 " style="padding: 3em; ">
+                                    <dl>
+                                        <p class="text-xl font-bold  cursor-pointer sm:text-2xl "  style="color: #fafafa; ">Especialidad</p>
+                                    </dl>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Symptom card -->
+                    <div class="bg-dates-3  overflow-hidden shadow rounded-lg h-full mx-2 cursor-pointer" *ngIf="complete_account === 100" [routerLink]="['/Home/Dates/AskForADate']">
+                        <div class="p-5 ">
+                            <div class="flex items-center ">
+                                <div class="ml-5 p-4 text-center flex-1 " style="padding: 3em; ">
+                                    <dl>
+                                        <p class="text-xl font-bold  cursor-pointer sm:text-2xl " style="color: #fafafa; ">Síntomas</p>
+                                    </dl>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Future dates cards -->
+    <section aria-labelledby="quick-links-title ">
+        <div class="bg-gray-100">
+            <div class="max-w-7xl mx-auto  sm:px-6">
+                <h2 class=" text-lg leading-6 pb-2  font-bold text-primary  ">Proximas citas agendadas</h2>
+                <div class="sm:flex sm:items-center my-4">
+                  <div class="w-full">
+                      <div class="relative">
+                          <div class="pointer-events-none absolute inset-y-0 left-0 pl-3 py-2 flex items-center">
+                              <!-- Heroicon name: solid/search -->
+                              <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+                          </svg>
+                          </div>
+                          <input (keyup)="GetPendingAppointment()" [(ngModel)]="search" id="search" name="search" class="block w-full bg-white border border-gray-200 rounded-md  pl-10 pr-3 text-sm shadow-sm placeholder-gray-500 focus:outline-none focus:text-gray-900 focus:placeholder-gray-400 focus:ring-1  sm:text-sm" placeholder="Buscar citas agendadas..."
+                              type="search">
+                      </div>
+                  </div>
+                </div>
+                <div class="rounded-md bg-yellow-50 p-4" *ngIf="PendingAppointment.length === 0">
+                  <div class="flex">
+                      <div class="flex-shrink-0">
+                          <!-- Heroicon name: mini/exclamation-triangle -->
+                          <svg class="h-5 w-5 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M8.485 3.495c.673-1.167 2.357-1.167 3.03 0l6.28 10.875c.673 1.167-.17 2.625-1.516 2.625H3.72c-1.347 0-2.189-1.458-1.515-2.625L8.485 3.495zM10 6a.75.75 0 01.75.75v3.5a.75.75 0 01-1.5 0v-3.5A.75.75 0 0110 6zm0 9a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd" />
+                      </svg>
+                      </div>
+                      <div class="ml-3">
+                          <h3 class="text-sm font-medium text-yellow-800">No encontramos citas agendadas</h3>
+                          <div class="mt-2 text-sm text-yellow-700">
+                              <p>Vuelve a la pag anterior o reserva una nueva.</p>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+                <ul role="list" class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 mt-2">
+                    <li class="col-span-1 bg-white rounded-lg sm:text-left mx-1 shadow divide-y divide-gray-200" *ngFor="let p of PendingAppointment">
+                        <div class="w-full flex items-center justify-between p-3 space-x-6">
+                            <div class="flex-1 truncate">
+                                <div class="flex  space-x-3">
+                                    <h3 class="text-gray-900 text-xl font-semibold truncate"> {{p.medical_specialty.medical.first_name}} {{p.medical_specialty.medical.first_name.last_name}} </h3>
+                                </div>
+                                <p class="mt-1 text-gray-500 text-sm truncate">{{p.medical_specialty.license.specialty.name}}</p>
+                            </div>
+                            <img *ngIf="p.medical_specialty.medical.avatar === null" class="w-10 h-10 bg-gray-300 rounded-full flex-shrink-0" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=4&amp;w=256&amp;h=256&amp;q=60"
+                                alt="">
+                            <img *ngIf="p.medical_specialty.medical.avatar !== null" class="w-10 h-10 bg-gray-300 rounded-full flex-shrink-0" [src]="p.medical_specialty.medical.avatar" alt="">
+                        </div>
+                        <div>
+                            <div class="flex justify-between flex-wrap p-3 text-sm">
+                                <div>
+                                    <p class="font-semibold text-gray-600">Fecha</p>
+                                    <div class="flex justify-between flex-wrap">
+                                        <p class="mr-1 flex flex-nowrap">
+                                            {{p.date}}
+                                        </p>
+
+                                    </div>
+                                </div>
+                                <div>
+                                    <p class="font-semibold text-gray-600">Hora</p>
+                                    <div class="flex justify-between flex-wrap">
+                                        <p class="mr-1 ">
+                                            {{p.start_time}} - {{p.end_time}}
+                                            <span class=" flex flex-nowrap">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                </svg> {{p.weekly.weekly_program.duration}} min
+                                            </span>
+                                        </p>
+                                        <br>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class=" bg-future-dates  rounded-lg p-3 text-left flex justify-between flex-wrap">
+                                <div>
+                                    <span class="mt-4 text-sm font-medium text-gray-900">Consulta  </span>
+                                    <dd class="mt-1 text-sm text-gray-500" *ngIf="p.is_telemedicine">Telemedicina</dd>
+                                    <dd class="mt-1 text-sm text-gray-500" *ngIf="!p.is_telemedicine">Presencial</dd>
+                                    <dd class="mt-1 text-sm text-gray-500" >{{p.location.name}} {{p.location.address_detail}}</dd>
+                                </div>
+
+                                <dd class="h-full">
+                                    <button style="background-color: #542582;" type="button" *ngIf="p.is_telemedicine" [routerLink]="['/Home/Dates/AssistDate']" class="inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white  hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 mt-1">Asistir cita</button>
+                                </dd>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <!-- Pagination -->
+                <nav class="border-t border-gray-200 px-4 flex items-center justify-between sm:px-0">
+                    <div class="-mt-px w-0 flex-1 flex">
+                        <button type="button" (click)="PaginationPending(-1)" [disabled]="previousPending === null" class="border-t-2 disabled:opacity-60 cursor-pointer border-transparent pt-4 pr-1 inline-flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300">
+                            <!-- Heroicon name: solid/arrow-narrow-left -->
+                            <svg class="mr-3 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                <path fill-rule="evenodd" d="M7.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l2.293 2.293a1 1 0 010 1.414z" clip-rule="evenodd" />
+                            </svg> Antes
+                        </button>
+                    </div>
+
+                    <div class="-mt-px w-0 flex-1 flex justify-end">
+                        <button (click)="PaginationPending(1)" [disabled]="nextPending === null" class="border-t-2 disabled:opacity-60 cursor-pointer border-transparent pt-4 pl-1 inline-flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300">
+                            Siguiente
+                            <!-- Heroicon name: solid/arrow-narrow-right -->
+                            <svg class="ml-3 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                            </svg>
+                        </button>
+                    </div>
+                </nav>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Finalized dates cards -->
+    <section aria-labelledby="quick-links-title ">
+        <div class="bg-gray-100 ">
+            <div class="max-w-7xl mx-auto  sm:px-6">
+                <ul role="list" class="">
+                    <li class="col-span-1     divide-y divide-gray-200">
+                        <div class=" mx-auto">
+                            <div class="flex flex-col py-4">
+                                <h3 class="font-bold text-primary text-lg truncate pb-3"> Citas reservadas</h3>
+                                <div class="sm:flex sm:items-center my-4">
+                                  <div class="w-full">
+                                      <div class="relative">
+                                          <div class="pointer-events-none absolute inset-y-0 left-0 pl-3 py-2 flex items-center">
+                                              <!-- Heroicon name: solid/search -->
+                                              <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                            <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+                                          </svg>
+                                          </div>
+                                          <input (keyup)="GetReservedAppointments()" [(ngModel)]="search" id="search" name="search" class="block w-full bg-white border border-gray-200 rounded-md  pl-10 pr-3 text-sm shadow-sm placeholder-gray-500 focus:outline-none focus:text-gray-900 focus:placeholder-gray-400 focus:ring-1  sm:text-sm" placeholder="Buscar citas agendadas..."
+                                              type="search">
+                                      </div>
+                                  </div>
+                                </div>
+                                <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+                                    <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+
+                                        <div class="rounded-md bg-yellow-50 p-4" *ngIf="ReservedAppointment.length === 0">
+                                            <div class="flex">
+                                                <div class="flex-shrink-0">
+                                                    <!-- Heroicon name: mini/exclamation-triangle -->
+                                                    <svg class="h-5 w-5 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                  <path fill-rule="evenodd" d="M8.485 3.495c.673-1.167 2.357-1.167 3.03 0l6.28 10.875c.673 1.167-.17 2.625-1.516 2.625H3.72c-1.347 0-2.189-1.458-1.515-2.625L8.485 3.495zM10 6a.75.75 0 01.75.75v3.5a.75.75 0 01-1.5 0v-3.5A.75.75 0 0110 6zm0 9a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd" />
+                                                </svg>
+                                                </div>
+                                                <div class="ml-3">
+                                                    <h3 class="text-sm font-medium text-yellow-800">No encontramos citas reservadas</h3>
+                                                    <div class="mt-2 text-sm text-yellow-700">
+                                                        <p>Vuelve a la pag anterior o reserva una nueva.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg" *ngIf="ReservedAppointment.length">
+                                            <table class="min-w-full divide-y divide-gray-200">
+                                                <thead class="bg-gray-50">
+                                                    <tr>
+                                                        <th scope="col" class="px-6 py-3 text-left text-xs  text-primary font-semibold uppercase tracking-wider">
+                                                            Especialista
+                                                        </th>
+                                                        <th scope="col" class="px-6 py-3 text-left text-xs  text-primary font-semibold uppercase tracking-wider">
+                                                            Especialidad
+                                                        </th>
+
+                                                        <th scope="col" class="px-6 py-3 text-left text-xs  text-primary font-semibold uppercase tracking-wider">
+                                                            Fecha
+                                                        </th>
+                                                        <th scope="col" class="px-6 py-3 text-left text-xs  text-primary font-semibold uppercase tracking-wider">
+                                                            Valor
+                                                        </th>
+                                                        <th scope="col" class="px-6 py-3 text-left text-xs  text-primary font-semibold uppercase tracking-wider">
+                                                            Pagar
+                                                        </th>
+
+                                                    </tr>
+                                                </thead>
+                                                <tbody class="bg-white divide-y divide-gray-200">
+
+                                                    <tr *ngFor="let a of ReservedAppointment">
+                                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 font-medium">
+                                                            {{a.medical_specialty.medical.first_name}} {{a.medical_specialty.medical.last_name}}
+                                                        </td>
+                                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 font-medium">
+                                                            Alergólogo
+                                                        </td>
+
+                                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 font-medium">
+                                                            {{a.date}}
+                                                        </td>
+                                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 font-medium">
+                                                            {{a.ally_fee.fee + a.ally_fee.netcare_fee | currency}}
+                                                        </td>
+                                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 font-medium">
+                                                          <svg xmlns="http://www.w3.org/2000/svg" (click)="Pay(a.ally_fee.fee + a.ally_fee.netcare_fee )" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-sky-500 cursor-pointer hover:text-sky-600">
+                                                            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5z" />
+                                                          </svg>
+                                                        </td>
+                                                    </tr>
+
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <!-- Pagination -->
+                                        <nav class="border-t border-gray-200 px-4 flex items-center justify-between sm:px-0">
+                                            <div class="-mt-px w-0 flex-1 flex">
+                                                <button type="button" (click)="PaginationReserved(-1)" [disabled]="previousReserved === null" class="border-t-2 disabled:opacity-60 cursor-pointer border-transparent pt-4 pr-1 inline-flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300">
+                                                    <!-- Heroicon name: solid/arrow-narrow-left -->
+                                                    <svg class="mr-3 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                        <path fill-rule="evenodd" d="M7.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l2.293 2.293a1 1 0 010 1.414z" clip-rule="evenodd" />
+                                                    </svg> Antes
+                                                </button>
+                                            </div>
+
+                                            <div class="-mt-px w-0 flex-1 flex justify-end">
+                                                <button (click)="PaginationReserved(1)" [disabled]="nextReserved === null" class="border-t-2 disabled:opacity-60 cursor-pointer border-transparent pt-4 pl-1 inline-flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300">
+                                                    Siguiente
+                                                    <!-- Heroicon name: solid/arrow-narrow-right -->
+                                                    <svg class="ml-3 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                    <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                        </nav>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="col-span-1     divide-y divide-gray-200">
+                        <div class=" mx-auto">
+                            <div class="flex flex-col py-4">
+                                <h3 class="font-bold text-primary text-lg truncate pb-3"> Citas asistidas</h3>
+                                <div class="sm:flex sm:items-center my-4">
+                                  <div class="w-full">
+                                      <div class="relative">
+                                          <div class="pointer-events-none absolute inset-y-0 left-0 pl-3 py-2 flex items-center">
+                                              <!-- Heroicon name: solid/search -->
+                                              <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                            <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+                                          </svg>
+                                          </div>
+                                          <input (keyup)="GetAssistedAppointment()" [(ngModel)]="search" id="search" name="search" class="block w-full bg-white border border-gray-200 rounded-md  pl-10 pr-3 text-sm shadow-sm placeholder-gray-500 focus:outline-none focus:text-gray-900 focus:placeholder-gray-400 focus:ring-1  sm:text-sm" placeholder="Buscar citas agendadas..."
+                                              type="search">
+                                      </div>
+                                  </div>
+                                </div>
+                                <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+                                    <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+
+                                        <div class="rounded-md bg-yellow-50 p-4" *ngIf="AssistedAppointment.length === 0">
+                                            <div class="flex">
+                                                <div class="flex-shrink-0">
+                                                    <!-- Heroicon name: mini/exclamation-triangle -->
+                                                    <svg class="h-5 w-5 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                  <path fill-rule="evenodd" d="M8.485 3.495c.673-1.167 2.357-1.167 3.03 0l6.28 10.875c.673 1.167-.17 2.625-1.516 2.625H3.72c-1.347 0-2.189-1.458-1.515-2.625L8.485 3.495zM10 6a.75.75 0 01.75.75v3.5a.75.75 0 01-1.5 0v-3.5A.75.75 0 0110 6zm0 9a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd" />
+                                                </svg>
+                                                </div>
+                                                <div class="ml-3">
+                                                    <h3 class="text-sm font-medium text-yellow-800">No encontramos citas asisitidas</h3>
+                                                    <div class="mt-2 text-sm text-yellow-700">
+                                                        <p>Vuelve a la pag anterior o reserva una nueva.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg" *ngIf="AssistedAppointment.length">
+                                            <table class="min-w-full divide-y divide-gray-200">
+                                                <thead class="bg-gray-50">
+                                                    <tr>
+                                                        <th scope="col" class="px-6 py-3 text-left text-xs  text-primary font-semibold uppercase tracking-wider">
+                                                            Especialista
+                                                        </th>
+                                                        <th scope="col" class="px-6 py-3 text-left text-xs  text-primary font-semibold uppercase tracking-wider">
+                                                            Especialidad
+                                                        </th>
+
+                                                        <th scope="col" class="px-6 py-3 text-left text-xs  text-primary font-semibold uppercase tracking-wider">
+                                                            Fecha
+                                                        </th>
+
+                                                    </tr>
+                                                </thead>
+                                                <tbody class="bg-white divide-y divide-gray-200">
+
+                                                    <tr *ngFor="let a of AssistedAppointment">
+                                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 font-medium">
+                                                            {{a.medical_specialty.medical.first_name}} {{a.medical_specialty.medical.last_name}}
+                                                        </td>
+                                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 font-medium">
+                                                            Alergólogo
+                                                        </td>
+
+                                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 font-medium">
+                                                            {{a.date}}
+                                                        </td>
+                                                    </tr>
+
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <!-- Pagination -->
+                                        <nav class="border-t border-gray-200 px-4 flex items-center justify-between sm:px-0">
+                                            <div class="-mt-px w-0 flex-1 flex">
+                                                <button type="button" (click)="PaginationAssisted(-1)" [disabled]="previousAssisted === null" class="border-t-2 disabled:opacity-60 cursor-pointer border-transparent pt-4 pr-1 inline-flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300">
+                                                    <!-- Heroicon name: solid/arrow-narrow-left -->
+                                                    <svg class="mr-3 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                        <path fill-rule="evenodd" d="M7.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l2.293 2.293a1 1 0 010 1.414z" clip-rule="evenodd" />
+                                                    </svg> Antes
+                                                </button>
+                                            </div>
+
+                                            <div class="-mt-px w-0 flex-1 flex justify-end">
+                                                <button (click)="PaginationAssisted(1)" [disabled]="nextAssisted === null" class="border-t-2 disabled:opacity-60 cursor-pointer border-transparent pt-4 pl-1 inline-flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300">
+                                                    Siguiente
+                                                    <!-- Heroicon name: solid/arrow-narrow-right -->
+                                                    <svg class="ml-3 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                    <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                        </nav>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="col-span-1     divide-y divide-gray-200">
+                        <div class=" mx-auto ">
+                            <div class="flex flex-col py-4">
+                                <h2 class=" text-lg leading-6 pb-2  font-bold text-primary">Citas canceladas</h2>
+                                <div class="sm:flex sm:items-center my-4">
+                                  <div class="w-full">
+                                      <div class="relative">
+                                          <div class="pointer-events-none absolute inset-y-0 left-0 pl-3 py-2 flex items-center">
+                                              <!-- Heroicon name: solid/search -->
+                                              <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                            <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+                                          </svg>
+                                          </div>
+                                          <input (keyup)="GetCancelledAppointments()" [(ngModel)]="search" id="search" name="search" class="block w-full bg-white border border-gray-200 rounded-md  pl-10 pr-3 text-sm shadow-sm placeholder-gray-500 focus:outline-none focus:text-gray-900 focus:placeholder-gray-400 focus:ring-1  sm:text-sm" placeholder="Buscar citas agendadas..."
+                                              type="search">
+                                      </div>
+                                  </div>
+                                </div>
+                                <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+                                    <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+                                        <div class="rounded-md bg-yellow-50 p-4" *ngIf="CanceledAppointment.length === 0">
+                                            <div class="flex">
+                                                <div class="flex-shrink-0">
+                                                    <!-- Heroicon name: mini/exclamation-triangle -->
+                                                    <svg class="h-5 w-5 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                  <path fill-rule="evenodd" d="M8.485 3.495c.673-1.167 2.357-1.167 3.03 0l6.28 10.875c.673 1.167-.17 2.625-1.516 2.625H3.72c-1.347 0-2.189-1.458-1.515-2.625L8.485 3.495zM10 6a.75.75 0 01.75.75v3.5a.75.75 0 01-1.5 0v-3.5A.75.75 0 0110 6zm0 9a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd" />
+                                                </svg>
+                                                </div>
+                                                <div class="ml-3">
+                                                    <h3 class="text-sm font-medium text-yellow-800">No encontramos citas canceladas</h3>
+                                                    <div class="mt-2 text-sm text-yellow-700">
+                                                        <p>Vuelve a la pag anterior o revisa tus citas  canceladas.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg" *ngIf="CanceledAppointment.length">
+                                            <table class="min-w-full divide-y divide-gray-200">
+                                                <thead class="bg-gray-50">
+                                                    <tr>
+                                                        <th scope="col" class="px-6 py-3 text-left text-xs  text-primary font-semibold uppercase tracking-wider">
+                                                            Especialista
+                                                        </th>
+                                                        <th scope="col" class="px-6 py-3 text-left text-xs  text-primary font-semibold uppercase tracking-wider">
+                                                            Especialidad
+                                                        </th>
+
+                                                        <th scope="col" class="px-6 py-3 text-left text-xs  text-primary font-semibold uppercase tracking-wider">
+                                                            Fecha
+                                                        </th>
+
+                                                    </tr>
+                                                </thead>
+                                                <tbody class="bg-white divide-y divide-gray-200">
+
+                                                    <tr *ngFor="let c of CanceledAppointment">
+                                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 font-medium">
+                                                            {{c.medical_specialty.medical.first_name}} {{c.medical_specialty.medical.last_name}}
+                                                        </td>
+                                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 font-medium">
+                                                            Alergólogo
+                                                        </td>
+                                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 font-medium">
+                                                            {{c.date}}
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <!-- Pagination -->
+                                        <nav class="border-t border-gray-200 px-4 flex items-center justify-between sm:px-0">
+                                            <div class="-mt-px w-0 flex-1 flex">
+                                                <button type="button" (click)="PaginationCanceled(-1)" [disabled]="previousCanceled === null" class="border-t-2 disabled:opacity-60 cursor-pointer border-transparent pt-4 pr-1 inline-flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300">
+                                                    <!-- Heroicon name: solid/arrow-narrow-left -->
+                                                    <svg class="mr-3 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                        <path fill-rule="evenodd" d="M7.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l2.293 2.293a1 1 0 010 1.414z" clip-rule="evenodd" />
+                                                    </svg> Antes
+                                                </button>
+                                            </div>
+
+                                            <div class="-mt-px w-0 flex-1 flex justify-end">
+                                                <button (click)="PaginationCanceled(1)" [disabled]="nextCanceled === null" class="border-t-2 disabled:opacity-60 cursor-pointer border-transparent pt-4 pl-1 inline-flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300">
+                                                    Siguiente
+                                                    <!-- Heroicon name: solid/arrow-narrow-right -->
+                                                    <svg class="ml-3 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                    <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                        </nav>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+</div>

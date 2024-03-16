@@ -1,0 +1,67 @@
+<div class="py-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <header>
+        <div class=" mx-auto w-full flex justify-between flex-wrap px-4 sm:px-6 lg:px-8">
+            <h1 class="text-2xl font-bold leading-tight text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 cursor-pointer" [routerLink]="['/Home/Welcome']" routerLinkActive="router-link-active" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M11 15l-3-3m0 0l3-3m-3 3h8M3 12a9 9 0 1118 0 9 9 0 01-18 0z" />
+              </svg>
+            </h1>
+            <h1 class="text-xl font-bold md:block hidden leading-tight text-white truncate">Descubre las novedades que tenemos para ti</h1>
+        </div>
+    </header>
+
+    <div class="mt-12 mx-auto w-full px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-col-1 gap-y-8  lg:grid-cols-2 sm:grid-cols-1  sm:px-6 lg:px-8">
+            <div class="lg:col-span-2 sm:col-span-1">
+                <div id="carouselExampleControls" class="carousel slide relative rounded-sm mt-4  " data-bs-ride="carousel">
+                    <div class="carousel-inner relative w-full overflow-hidden">
+                        <div class="carousel-item active relative float-left w-full">
+                            <img src="assets/images/cimg.png" class="block w-full rounded-md" alt="Wild Landscape" />
+
+                        </div>
+
+                    </div>
+                    <button class="carousel-control-prev absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline left-0" type="button" data-bs-target="#carouselExampleControls"
+                        data-bs-slide="prev">
+                      <span class="carousel-control-prev-icon inline-block bg-no-repeat" aria-hidden="true"></span>
+                      <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline right-0" type="button" data-bs-target="#carouselExampleControls"
+                        data-bs-slide="next">
+                      <span class="carousel-control-next-icon inline-block bg-no-repeat" aria-hidden="true"></span>
+                      <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="col-span-1 lg:col-span-2">
+                <h1 class="text-xl font-bold leading-tight text-primary">¡Aprovecha nuestros descuentos!</h1>
+
+            </div>
+            <div class="col-span-1 flex shadow-sm w-full rounded-md">
+                <div class="flex-shrink-0 flex-col items-center justify-center w-1/4 p-8 text-center bg-gradient text-white font-bold  "><span class="text-xl">SALE</span> <br> <span class="text-2xl">20%</span></div>
+                <div class="flex-1 flex items-center rounded-r-md bg-image text-center  border-primary ">
+                    <div class="px-4 py-2  w-auto h-auto  ">
+
+                        <a href="#" class="text-white   text-2xl font-bold ">Cupón de especialidad en ginecología</a>
+                        <br>
+                        <span class="inline-flex items-center mt-3 px-3 py-0.5 rounded-full text-sm font-medium bg-blue-400 text-white"> Hasta el mes de mayo </span>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-span-1 flex shadow-sm w-full rounded-md">
+                <div class="flex-shrink-0 flex-col items-center justify-center w-1/4 p-8 text-center bg-gradient text-white font-bold  "><span class="text-xl">SALE</span> <br> <span class="text-2xl">20%</span></div>
+                <div class="flex-1 flex items-center rounded-r-md w-full h-full bg-image-2 text-center  border-primary ">
+                    <div class="px-4 py-2  w-auto h-auto  ">
+
+                        <a href="#" class="text-white   text-2xl font-bold ">Cupón de especialidad en ginecología</a>
+                        <br>
+                        <span class="inline-flex items-center mt-3 px-3 py-0.5 rounded-full text-sm font-medium bg-blue-400 text-white"> Hasta el mes de mayo </span>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

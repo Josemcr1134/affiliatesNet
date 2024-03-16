@@ -1,0 +1,109 @@
+<div class="grid grid-cols-1 gap-4 items-start lg:grid-cols-2 lg:gap-8">
+    <!-- Left column -->
+    <div class="grid grid-cols-1 col-span-2  gap-4 lg:col-span-1">
+        <!-- Basic Registerr Info -->
+        <section aria-labelledby="profile-overview-title">
+            <div class="rounded-lg bg-white overflow-hidden shadow">
+                <div class=" p-6">
+                    <div class=" ">
+                        <h3 class="text-primary pb-3 text-xl font-semibold truncate">Información básica</h3>
+                        <div class=" lg:p-0 mt-4   py-5 sm:rounded-lg mb-3">
+                            <div class="md:grid md:grid-cols-3 md:gap-6">
+                                <div class=" md:mt-0 md:col-span-3">
+                                    <form action="#" method="POST">
+                                        <div class="grid grid-cols-6 gap-6">
+                                            <div class="col-span-6 sm:col-span-3">
+                                                <label for="first-name" class="block text-sm font-medium text-gray-700">Nombres</label>
+                                                <input type="text" [(ngModel)]="name" name="first-name" id="first-name" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                            </div>
+
+                                            <div class="col-span-6 sm:col-span-3">
+                                                <label for="last-name" class="block text-sm font-medium text-gray-700">Apellidos</label>
+                                                <input type="text" [(ngModel)]="lastName" name="last-name" id="last-name" autocomplete="family-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                            </div>
+
+                                            <div class="col-span-6 sm:col-span-3">
+                                                <label for="type-id" class="block text-sm font-medium text-gray-700">Tipo de identificación </label>
+                                                <select id="type-id" name="type-id" autocomplete="type-id" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                                    <option>{{idType}}</option>
+
+                                                </select>
+                                            </div>
+
+                                            <div class="col-span-6 sm:col-span-3">
+                                                <label for="id-number" class="block text-sm font-medium text-gray-700">Número de identificación</label>
+                                                <input type="number" [(ngModel)]="idNumber" name="id-number" id="id-number" autocomplete="address-level2" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+
+                                            </div>
+                                            <div class="col-span-6 sm:col-span-3">
+                                                <label for="affiliate-email" class="block text-sm font-medium text-gray-700">Correo electrónico</label>
+                                                <input type="email" [(ngModel)]="email" name="affiliate-email" id="affiliate-email" autocomplete="affiliate-email" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                            </div>
+                                            <div class="col-span-6 sm:col-span-3">
+                                                <label for="phone-number" class="block text-sm font-medium text-gray-700">Celular</label>
+                                                <input type="number"[(ngModel)]="phone" name="phone-number" id="phone-number" autocomplete="address-level2" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                            </div>
+
+                                            <div class="col-span-6 sm:col-span-3">
+                                                <label for="region" class="block text-sm font-medium text-gray-700">Género</label>
+                                                <select id="gender" [(ngModel)]="gender" name="gender" autocomplete="gender" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                                    <option>{{gender}}</option>
+
+                                                </select>
+                                            </div>
+                                            <div class="col-span-6 sm:col-span-3">
+                                                <label for="region" class="block text-sm font-medium text-gray-700">Estado civil</label>
+                                                <select id="civil-status" [(ngModel)]="civilStatus" name="civil-status" autocomplete="civil-status" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                                    <option>{{civilStatus}}</option>
+
+
+                                                </select>
+                                            </div>
+                                            <div class="col-span-6 sm:col-span-4">
+                                                <label for="birthday" class="block text-sm font-medium text-gray-700">Fecha de nacimiento</label>
+                                                <input type="date" [(ngModel)]="birthday" name="birthday" id="birthday" autocomplete="address-level2" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+
+                                            </div>
+                                            <br>
+                                            <div class="col-span-6 sm:col-span-6 lg:col-span-2">
+                                                <label for="address-user" class="block text-sm font-medium text-gray-700">Dirección de residencia</label>
+                                                <input type="text" [(ngModel)]="address" name="address-user" id="address-user" autocomplete="address-level2" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                            </div>
+
+                                            <div class="col-span-6 sm:col-span-3 lg:col-span-2">
+                                                <label for="region" class="block text-sm font-medium text-gray-700">Detalles de la dirección</label>
+                                                <input type="text" [(ngModel)]="addressDetail" name="address-details-user" id="address-details-user" autocomplete="address-level2" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+
+                                            </div>
+
+                                            <div class="col-span-6 sm:col-span-3 lg:col-span-2">
+                                                <label for="neighborhood" class="block text-sm font-medium text-gray-700">Barrio</label>
+                                                <input type="text" [(ngModel)]="neighborhood" name="neighborhood" id="neighborhood" autocomplete="neighborhood" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                            </div>
+                                            <div class="col-span-6 sm:col-span-6 lg:col-span-2">
+                                                <label for="country" class="block text-sm font-medium text-gray-700">País</label>
+                                                <input type="text" [(ngModel)]="country" name="country" id="country" autocomplete="address-level2" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                            </div>
+
+                                            <div class="col-span-6 sm:col-span-3 lg:col-span-2">
+                                                <label for="department" class="block text-sm font-medium text-gray-700">Departamento</label>
+                                                <input type="text" [(ngModel)]="dpt" name="department" id="department" autocomplete="address-level2" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+
+                                            </div>
+
+                                            <div class="col-span-6 sm:col-span-3 lg:col-span-2">
+                                                <label for="city" class="block text-sm font-medium text-gray-700">Ciudad / Municipio</label>
+                                                <input type="text" [(ngModel)]="city" name="city" id="city" autocomplete="city" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+</div>

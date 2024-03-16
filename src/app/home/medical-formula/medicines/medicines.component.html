@@ -1,0 +1,91 @@
+<div class="min-h-full">
+    <div class="py-10">
+        <header>
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h1 class="text-base font-bold leading-tight flex flex-nowrap text-white cursor-pointer">
+                    <svg xmlns="http://www.w3.org/2000/svg" [routerLink]="['/Home/MedicalFormula/UserMedicalFormula']" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M7 16l-4-4m0 0l4-4m-4 4h18" />
+                      </svg> Medicamentos
+                </h1>
+            </div>
+        </header>
+        <div class="grid lg:grid-cols-2 grid-cols-1" *ngIf="Medicines.length">
+          <section class="mt-8 sm:px-6 lg:px-8" *ngFor="let m of Medicines">
+
+              <div class="overflow-hidden bg-purple-50 shadow sm:rounded-lg">
+                <div class="px-4 py-5 sm:px-6">
+                  <h3 class="text-lg font-medium leading-6 text-indigo-900">{{m.medicine.trade_name}} </h3>
+                  <p class="mt-1 max-w-2xl text-sm text-gray-500">{{m.medicine.concentration}} </p>
+                </div>
+                <div class="border-t border-gray-200 px-4 py-5 sm:px-6">
+                  <dl class="grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2">
+                    <div class="sm:col-span-1">
+                      <dt class="text-sm font-medium text-gray-500">Durante </dt>
+                      <dd class="mt-1 text-sm text-gray-900">{{m.during}} </dd>
+                    </div>
+                    <div class="sm:col-span-1">
+                      <dt class="text-sm font-medium text-gray-500">Cantidad </dt>
+                      <dd class="mt-1 text-sm text-gray-900">{{m.quantity}} </dd>
+                    </div>
+                    <div class="sm:col-span-1">
+                      <dt class="text-sm font-medium text-gray-500">Cada </dt>
+                      <dd class="mt-1 text-sm text-gray-900">{{m.every}}</dd>
+                    </div>
+                    <div class="sm:col-span-1">
+                      <dt class="text-sm font-medium text-gray-500">Unidades</dt>
+                      <dd class="mt-1 text-sm text-gray-900">{{m.unit}} </dd>
+                    </div>
+                    <div class="sm:col-span-2">
+                      <dt class="text-sm font-medium text-gray-500">Vía</dt>
+                      <dd class="mt-1 text-sm text-gray-900">{{m.via}}</dd>
+                    </div>
+
+                  </dl>
+                </div>
+              </div>
+
+
+          </section>
+        </div>
+        <div class="rounded-md bg-yellow-50 p-4" *ngIf="Medicines.length === 0">
+          <div class="flex">
+            <div class="flex-shrink-0">
+              <!-- Heroicon name: mini/exclamation-triangle -->
+              <svg class="h-5 w-5 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M8.485 3.495c.673-1.167 2.357-1.167 3.03 0l6.28 10.875c.673 1.167-.17 2.625-1.516 2.625H3.72c-1.347 0-2.189-1.458-1.515-2.625L8.485 3.495zM10 6a.75.75 0 01.75.75v3.5a.75.75 0 01-1.5 0v-3.5A.75.75 0 0110 6zm0 9a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd" />
+              </svg>
+            </div>
+            <div class="ml-3">
+              <h3 class="text-sm font-medium text-yellow-800">Oooops</h3>
+              <div class="mt-2 text-sm text-yellow-700">
+                <p>No encontramos medicamos</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- Pagination -->
+        <nav class="flex items-center justify-between border-t border-gray-200 px-4 sm:px-6 lg:px-8 mt-3">
+          <div class="-mt-px flex w-0 flex-1">
+            <button (click)="Pagination(-1)" [disabled]="previous === null" class="disabled:opacity-60 disabled:cursor-none inline-flex items-center border-t-2 border-transparent pt-4 pr-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700">
+              <!-- Heroicon name: mini/arrow-long-left -->
+              <svg class="mr-3 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M18 10a.75.75 0 01-.75.75H4.66l2.1 1.95a.75.75 0 11-1.02 1.1l-3.5-3.25a.75.75 0 010-1.1l3.5-3.25a.75.75 0 111.02 1.1l-2.1 1.95h12.59A.75.75 0 0118 10z" clip-rule="evenodd" />
+              </svg>
+              Anterior
+            </button>
+          </div>
+
+          <div class="-mt-px flex w-0 flex-1 justify-end">
+            <button  (click)="Pagination(1)" [disabled]="next === null" class="disabled:opacity-60 disabled:cursor-none inline-flex items-center border-t-2 border-transparent pt-4 pl-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700">
+              Siguiente
+              <!-- Heroicon name: mini/arrow-long-right -->
+              <svg class="ml-3 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M2 10a.75.75 0 01.75-.75h12.59l-2.1-1.95a.75.75 0 111.02-1.1l3.5 3.25a.75.75 0 010 1.1l-3.5 3.25a.75.75 0 11-1.02-1.1l2.1-1.95H2.75A.75.75 0 012 10z" clip-rule="evenodd" />
+              </svg>
+            </button>
+          </div>
+        </nav>
+    </div>
+</div>

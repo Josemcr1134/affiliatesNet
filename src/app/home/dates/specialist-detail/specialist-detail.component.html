@@ -1,0 +1,243 @@
+<div class="min-h-full">
+    <main class="">
+        <!-- Page header -->
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 md:flex md:items-center md:justify-between md:space-x-5 lg:max-w-7xl lg:px-8">
+            <div class="flex items-center space-x-5">
+                <div class="flex-shrink-0">
+                    <div class="relative">
+                        <img class="h-16 w-16 rounded-full" src="assets/images/doctor.png" alt="">
+                        <span class="absolute inset-0 shadow-inner rounded-full" aria-hidden="true"></span>
+                    </div>
+                </div>
+                <div>
+                    <h1 class="text-2xl font-bold text-white">{{medical_name}}</h1>
+                    <p class="text-sm font-medium text-white"> <a class="text-gray-3 00">Especialista
+
+                    </a> </p>
+                    <div class="qualification flex flex-nowrap " style="color: #0AB5CB;">
+                        <ngx-star-rating [(ngModel)]="medical_score"></ngx-star-rating>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class=" mt-3 max-w-7xl mx-auto grid grid-cols-1 gap-6 sm:px-6 lg:max-w-8xl lg:grid-flow-col-dense lg:grid-cols-5">
+            <div class=" mt-8  sm:col-span-5 lg:col-span-4">
+                <!-- Description list-->
+                <section aria-labelledby="specialist-information-deatil">
+                    <div class="bg-white shadow sm:rounded-lg">
+                        <div class=" px-3 py-5 sm:px-6">
+                            <dl class="grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2">
+                                <div class="sm:col-span-2">
+                                    <!-- This example requires Tailwind CSS v2.0+ -->
+                                    <nav aria-label="Progress">
+                                        <ol role="list" class="border border-gray-300 rounded-md divide-y divide-gray-300 md:flex md:divide-y-0">
+                                            <li class="relative md:flex-1 md:flex">
+                                                <!-- Current Step -->
+                                                <a class="px-6 py-4 flex items-center text-sm font-medium" aria-current="step">
+                                                    <span *ngIf="steps === 1" class="flex-shrink-0 w-10 h-10 flex items-center justify-center border-2 border-purple-600 rounded-full">
+                                                        <span class="text-purple-600">01</span>
+                                                    </span>
+                                                    <span *ngIf="steps > 1" class="flex-shrink-0 w-10 h-10 flex items-center justify-center bg-purple-600 rounded-full group-hover:bg-purple-800">
+                                                        <!-- Heroicon name: solid/check -->
+                                                        <svg class="w-6 h-6 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                          <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                                        </svg>
+                                                      </span>
+                                                    <span class="ml-4 text-sm font-medium text-purple-600">Tipo de cita</span>
+                                                </a>
+                                                <!-- Arrow separator for lg screens and up -->
+                                                <div class="hidden md:block absolute top-0 right-0 h-full w-5" aria-hidden="true">
+                                                    <svg class="h-full w-full text-gray-300" viewBox="0 0 22 80" fill="none" preserveAspectRatio="none">
+                                                        <path d="M0 -2L20 40L0 82" vector-effect="non-scaling-stroke" stroke="currentcolor" stroke-linejoin="round" />
+                                                    </svg>
+                                                </div>
+                                            </li>
+
+                                            <li class="relative md:flex-1 md:flex">
+                                                <!-- Current Step -->
+                                                <a class=" flex items-center group" aria-current="step">
+
+                                                    <span class="px-6 py-4 flex items-center text-sm font-medium">
+                                                        <span *ngIf="steps < 3" class="flex-shrink-0 w-10 h-10 flex items-center justify-center border-2 border-gray-300 rounded-full group-hover:border-gray-400">
+                                                            <span class="text-gray-500 group-hover:text-gray-900">02</span>
+                                                    </span>
+                                                    <span *ngIf="steps  >= 3" class="flex-shrink-0 w-10 h-10 flex items-center justify-center bg-purple-600 rounded-full group-hover:bg-purple-800">
+                                                    <!-- Heroicon name: solid/check -->
+                                                        <svg class="w-6 h-6 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                                        </svg>
+                                                    </span>
+                                                    <span class="ml-4 text-sm font-medium text-gray-500 group-hover:text-gray-900">Fecha</span>
+                                                    </span>
+                                                </a>
+
+                                                <!-- Arrow separator for lg screens and up -->
+                                                <div class="hidden md:block absolute top-0 right-0 h-full w-5" aria-hidden="true">
+                                                    <svg class="h-full w-full text-gray-300" viewBox="0 0 22 80" fill="none" preserveAspectRatio="none">
+                                                        <path d="M0 -2L20 40L0 82" vector-effect="non-scaling-stroke" stroke="currentcolor" stroke-linejoin="round" />
+                                                    </svg>
+                                                </div>
+                                            </li>
+
+                                            <li class="relative md:flex-1 md:flex">
+                                                <!-- Upcoming Step -->
+                                                <a class="group flex items-center">
+                                                    <span class="px-6 py-4 flex items-center text-sm font-medium">
+                                                        <span *ngIf="steps <= 3" class="flex-shrink-0 w-10 h-10 flex items-center justify-center border-2 border-gray-300 rounded-full group-hover:border-gray-400">
+                                                        <span class="text-gray-500 group-hover:text-gray-900">03</span>
+                                                    </span>
+                                                    <span *ngIf="steps === 4" class="flex-shrink-0 w-10 h-10 flex items-center justify-center bg-purple-600 rounded-full group-hover:bg-purple-800">
+                                                        <!-- Heroicon name: solid/check -->
+                                                            <svg class="w-6 h-6 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                                            </svg>
+                                                        </span>
+                                                    <span class="ml-4 text-sm font-medium text-gray-500 group-hover:text-gray-900">Pago</span>
+                                                    </span>
+                                                </a>
+                                            </li>
+                                        </ol>
+                                    </nav>
+                                </div>
+                                <div class="sm:col-span-2" *ngIf="steps === 1 ">
+                                    <p class="text-sm font-semibold text-center leading-5 text-gray-500 mb-3">¿Qué tipo de cita deseas?</p>
+                                    <div class="flex flex-wrap justify-center gap-x-4 mt-4">
+                                        <div>
+                                            <button type="button" (click)=" GetDates(false)" class="inline-flex items-center rounded-md border border-transparent bg-purple-100 px-4 py-2 text-sm font-medium text-purple-700 hover:bg-purple-200 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2">Presencial</button>
+                                        </div>
+                                        <div class="">
+                                            <button type="button" (click)=" GetDates(true)" class="inline-flex items-center rounded-md border border-transparent bg-purple-100 px-4 py-2 text-sm font-medium text-purple-700 hover:bg-purple-200 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2">Telemedicina</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="sm:col-span-2 " *ngIf="steps === 2 ">
+                                    <a class="text-gray-600 cursor-pointer text-xs mb-4 hover:text-gray-700" (click)="steps = steps - 1">Regresar</a>
+                                    <div class=" flex justify-around flex-wrap gap-3 mt-4">
+                                        <span *ngFor="let d of Dates" (click)="SelectAdate(this.date, d.start_time, d.id)" class="cursor-pointer hover:px-4 hover:py-1 inline-flex items-center rounded-full bg-blue-100 px-3 py-0.5 text-sm font-medium text-blue-800">
+                                        <span *ngIf="d.day === 0">Lunes </span>
+                                        <span *ngIf="d.day === 1">Martes </span>
+                                        <span *ngIf="d.day === 2">Miercoles </span>
+                                        <span *ngIf="d.day === 3">Jueves </span>
+                                        <span *ngIf="d.day === 4">Viernes </span>
+                                        <span *ngIf="d.day === 5">Sábado </span>
+                                        <span *ngIf="d.day === 6">Domingo </span> &nbsp; {{d.date}} &nbsp; a las {{d.start_time}}
+                                        </span>
+                                    </div>
+                                    <div class="rounded-md bg-red-50 p-4" *ngIf="Dates.length === 0">
+                                        <div class="flex">
+                                            <div class="flex-shrink-0">
+                                                <!-- Heroicon name: mini/x-circle -->
+                                                <svg class="h-5 w-5 text-red-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.28 7.22a.75.75 0 00-1.06 1.06L8.94 10l-1.72 1.72a.75.75 0 101.06 1.06L10 11.06l1.72 1.72a.75.75 0 101.06-1.06L11.06 10l1.72-1.72a.75.75 0 00-1.06-1.06L10 8.94 8.28 7.22z" clip-rule="evenodd" />
+                                            </svg>
+                                            </div>
+                                            <div class="ml-3">
+                                                <h3 class="text-sm font-medium text-red-800">No encontramos espacios disponibles</h3>
+                                                <div class="mt-2 text-sm text-red-700">
+                                                    <ul role="list" class="list-disc space-y-1 pl-5">
+                                                        <li>Selecciona otro especialista</li>
+                                                        <li>Vuelve a intentarlo mas tarde</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Pagination -->
+                                    <nav class="flex items-center justify-between col-span-4 px-4 border-t border-gray-200 sm:px-0 mt-3">
+                                        <div class="flex flex-1 w-0 -mt-px">
+                                            <button type="button" (click)="PaginationDates(-1)" [disabled]="page === 1" class="inline-flex items-center pt-4 pr-1 text-sm font-medium text-gray-500 border-t-2 border-transparent cursor-pointer disabled:opacity-60 disabled:cursor-none hover:text-gray-700 hover:border-gray-300">
+                                                <!-- Heroicon name: solid/arrow-narrow-left -->
+                                                <svg class="w-5 h-5 mr-3 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                    <path fill-rule="evenodd" d="M7.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l2.293 2.293a1 1 0 010 1.414z" clip-rule="evenodd" />
+                                                </svg> Antes
+                                            </button>
+                                        </div>
+                                        <div class="flex justify-end flex-1 w-0 -mt-px">
+                                            <button (click)="PaginationDates(1)" [disabled]="Dates.length === 0 || Dates.length < 10" class="inline-flex items-center pt-4 pl-1 text-sm font-medium text-gray-500 border-t-2 border-transparent cursor-pointer disabled:opacity-60 disabled:cursor-none hover:text-gray-700 hover:border-gray-300">
+                                                Siguiente
+                                                <!-- Heroicon name: solid/arrow-narrow-right -->
+                                                <svg class="w-5 h-5 ml-3 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </nav>
+                                </div>
+                                <div class="sm:col-span-2" *ngIf="steps >= 3">
+                                    <div>
+                                        <label for="comment" class="block text-sm font-medium text-purple-700">Agreganos la razón o razones que te llevaron a solicitar este servicio*</label>
+                                        <div class="mt-1">
+                                            <textarea rows="4" [(ngModel)]="reason" name="comment" id="comment" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="flex flex-wrap">
+                                        <button type="button" (click)="NewAppointment()" [disabled]="reason.length === 0 || steps > 3" class="disabled:opacity-50 disabled:cursor-not-allowed my-2 inline-flex items-center rounded-md border border-transparent bg-purple-100 px-4 py-2 text-sm font-medium text-purple-700 hover:bg-purple-200 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2">Continuar</button>
+                                        <button type="button" (click)="steps = steps - 1" class="m-2 inline-flex items-center rounded-md border border-transparent bg-gray-100 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2">Volver</button>
+                                    </div>
+                                </div>
+                            </dl>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <section class="bg-gray-50 pt-16  pb-10 px-4 sm:px-6 lg:px-0 lg:pb-16 lg:bg-transparent sm:col-span-5  lg:col-span-1">
+                <div class="max-w-lg mx-auto lg:max-w-none">
+                    <h2 id="summary-heading" class="text-lg font-medium text-gray-900">Resumen de pago</h2>
+                    <ul role="list" class="text-sm font-medium text-gray-900 divide-y divide-gray-200">
+                        <li class="flex items-start py-3 space-x-4">
+                            <div class="flex-auto space-y-1">
+                                <h3>Consulta</h3>
+
+                            </div>
+                            <p class="flex-none text-base font-medium">{{service_fee | currency}}</p>
+                        </li>
+
+
+                    </ul>
+                    <dl class="hidden text-sm font-medium text-gray-900 space-y-6  pt-6 lg:block">
+                        <div class="flex items-center justify-between border-t border-gray-200 pt-6">
+                            <dt class="text-base">Total</dt>
+                            <dd class="text-base">{{service_fee | currency}}</dd>
+                        </div>
+                    </dl>
+                    <div class="fixed bottom-0 inset-x-0 flex flex-col-reverse text-sm font-medium text-gray-900 lg:hidden">
+                        <div class="relative z-10 bg-white border-t border-gray-200 px-4 sm:px-6">
+                            <div class="max-w-lg mx-auto">
+                                <button type="button" class="w-full flex items-center py-6 font-medium" aria-expanded="false">
+                          <span class="text-base mr-auto">Total</span>
+                          <span class="text-base mr-2">{{service_fee | currency}}</span>
+                          <!-- Heroicon name: solid/chevron-up -->
+                          <svg class="w-5 h-5 text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clip-rule="evenodd" />
+                          </svg>
+                        </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!--  " -->
+                    <div class=" my-2 mt-8  justify-center " *ngIf="steps === 4">
+
+                        <a  class="inline-flex  text-center items-center px-4 py-2 mb-2 border border-transparent text-sm font-medium rounded-md text-purple-700 bg-purple-100 hover:bg-purple-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500"
+                            [href]='payment_url'> Pagar con wompi</a>
+
+                        <button type="button" (click)="generaNss()" class="inline-flex  mb-2  lg:mt-0  items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-gray-700 bg-gray-200 hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">Volver</button>
+
+                    </div>
+                </div>
+
+            </section>
+        </div>
+    </main>
+
+</div>
+
+
+<!-- LOADING SCREEN -->
+
+<div *ngIf="loading" wire:loading class="fixed top-0 left-0 right-0 bottom-0 w-full h-screen z-50 overflow-hidden bg-gray-700 opacity-75 flex flex-col items-center justify-center">
+    <div class="loader ease-linear rounded-full border-4 border-t-4 border-purple-200 h-12 w-12 mb-4"></div>
+    <h2 class="text-center text-white text-xl font-semibold">Estamos procesando y almacenando tus datos...</h2>
+    <p class="w-1/3 text-center text-white">Esto puede tomar varios segundos, porfavor no cierre ni refresque esta pantalla.</p>
+</div>

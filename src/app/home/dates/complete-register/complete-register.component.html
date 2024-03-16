@@ -1,0 +1,175 @@
+<div class=" py-5 mt-4 ">
+    <header class="mb-6">
+        <div class=" mx-auto px-4 sm:px-6 lg:px-4 flex justify-between">
+            <div>
+                <h1 class="text-base font-bold leading-tight flex flex-nowrap text-white cursor-pointer">
+                    <svg xmlns="http://www.w3.org/2000/svg" [routerLink]="['/Home/Dates/MyDates']" class="w-5 mr-2 align-middle" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                      </svg>
+                    <span> Solicitar cita</span>
+                </h1>
+            </div>
+
+            <div class="bg-blue-300  bg-opacity-60 -mt-8">
+                <p class="text-white text-xs opacity-100 p-4 rounded-sm font-medium">No has completado tu perfil, para solicitar cita completa el divulario <br> de indivación clínica para asegurarnos de brindarte la mejor atención.</p>
+            </div>
+        </div>
+    </header>
+    <div>
+        <div class="mt-8 flex flex-col">
+            <div class="-my-2  overflow-x-auto  lg:mx-4">
+                <div class=" sm:rounded-md sm:overflow-hidden">
+                    <div class="px-4 py-5 bg-white  sm:p-6">
+                        <h1 class="text-base font-medium leading-tight flex flex-nowrap  text-purple-900 cursor-pointer mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14.489" height="18.496" class="mr-2" viewBox="0 0 14.489 18.496">
+                                <path id="Trazado_2914" data-name="Trazado 2914" d="M181.327,262.575q0,3.5,0,7.008a1.89,1.89,0,0,1-1.432,1.915,2.214,2.214,0,0,1-.535.063q-5.03.005-10.06,0a1.9,1.9,0,0,1-1.95-2.089c.006-.093,0-.187,0-.281q-.007-6.807-.015-13.615a1.862,1.862,0,0,1,1.109-1.822,1.919,1.919,0,0,1,.791-.182q5.1-.018,10.2,0a1.889,1.889,0,0,1,1.886,1.958Q181.332,259.051,181.327,262.575Zm-1.285,5.163v-.214q0-5.973,0-11.947a.638.638,0,0,0-.724-.727h-8.092v12.887Zm-10.133-.015V254.851h-.556a.644.644,0,0,0-.728.727q0,6.015.007,12.03c0,.071,0,.142,0,.193Zm10.129,1.308H169.352c-.053,0-.107,0-.161,0a.632.632,0,0,0-.566.583.586.586,0,0,0,.428.623,1.134,1.134,0,0,0,.316.035q4.96,0,9.919,0c.06,0,.121,0,.181,0a.61.61,0,0,0,.565-.556C180.046,269.5,180.038,269.279,180.038,269.031Z" transdiv="translate(-167.088 -253.316)" fill="#542582" stroke="#4a2177" stroke-width="0.5"/>
+                            </svg>
+                            <span>Antecedentes clínicos</span>
+                        </h1>
+                        <p class="text-md-start text-sm leading-tight  mb-4 text-gray-400 cursor-pointer">
+                            ¿Durante los últimos 3 meses a sufrido usted de alguna de las siguientes alteraciones?
+                        </p>
+                        <div class=" mb-4  ">
+                            <div class="sm:col-span-1 ">
+                                <div class=" overflow-hidden">
+                                    <div class="  bg-white  ">
+                                        <fieldset class="" *ngFor="let mh of medicalHistory">
+                                            <div class="mt-4 space-y-4 grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-3">
+                                                <div class="flex items-center">
+                                                    <input id="is_throat_problems" value=true [(ngModel)]="mh.is_throat_problems" type="checkbox" class="focus:ring-blue-500 h-4 w-4 text-blue-600  border-blue-300">
+                                                    <label for="is_throat_problems" class="ml-3 block text-sm font-medium text-gray-400"> Problemas de garganta </label>
+                                                </div>
+                                                <div class="flex items-center">
+                                                    <input id="is_depression" value=true [(ngModel)]="mh.is_depression" type="checkbox" class="focus:ring-blue-500 h-4 w-4 text-blue-600  border-blue-300">
+                                                    <label for="is_depression" class="ml-3 block text-sm font-medium text-gray-400"> Depresión </label>
+                                                </div>
+                                                <div class="flex items-center">
+                                                    <input id="is_drowning" value=true [(ngModel)]="mh.is_drowning" type="checkbox" class="focus:ring-blue-500 h-4 w-4 text-blue-600  border-blue-300">
+                                                    <label for="is_drowning" class="ml-3 block text-sm font-medium text-gray-400"> Ahogo </label>
+                                                </div>
+                                                <div class="flex items-center">
+                                                    <input id="is_difficulty_breathing" value=true [(ngModel)]="mh.is_difficulty_breathing" type="checkbox" class="focus:ring-blue-500 h-4 w-4 text-blue-600  border-blue-300">
+                                                    <label for="is_difficulty_breathing" class="ml-3 block text-sm font-medium text-gray-400"> Dificultad para respirar  </label>
+                                                </div>
+                                                <div class="flex items-center">
+                                                    <input id="is_earache" type="checkbox" value=true [(ngModel)]="mh.is_earache" class="focus:ring-blue-500 h-4 w-4 text-blue-600  border-blue-300">
+                                                    <label for="is_earache" class="ml-3 block text-sm font-medium text-gray-400"> Dolor de oídos </label>
+                                                </div>
+                                                <div class="flex items-center">
+                                                    <input id="is_otitis" type="checkbox" value=true [(ngModel)]="mh.is_otitis" class="focus:ring-blue-500 h-4 w-4 text-blue-600  border-blue-300">
+                                                    <label for="is_otitis" class="ml-3 block text-sm font-medium text-gray-400"> Otitis </label>
+                                                </div>
+                                                <div class="flex items-center">
+                                                    <input id="is_waist_pain" type="checkbox" value=true [(ngModel)]="mh.is_waist_pain" class="focus:ring-blue-500 h-4 w-4 text-blue-600  border-blue-300">
+                                                    <label for="is_waist_pain" class="ml-3 block text-sm font-medium text-gray-400"> Dolor de cintura </label>
+                                                </div>
+                                                <div class="flex items-center">
+                                                    <input id="is_articulations_pain" type="checkbox" value=true [(ngModel)]="mh.is_articulations_pain" class="focus:ring-blue-500 h-4 w-4 text-blue-600  border-blue-300">
+                                                    <label for="is_articulations_pain" class="ml-3 block text-sm font-medium text-gray-400"> Dolor de huesos o articulaciones </label>
+                                                </div>
+                                                <div class="flex items-center">
+                                                    <input id="is_intestinal_problems" type="checkbox" value=true [(ngModel)]="mh.is_intestinal_problems" class="focus:ring-blue-500 h-4 w-4 text-blue-600  border-blue-300">
+                                                    <label for="is_intestinal_problems" class="ml-3 block text-sm font-medium text-gray-400"> Diarrea o problemas intestinales </label>
+                                                </div>
+                                                <div class="flex items-center">
+                                                    <input id="is_sleep_problems" type="checkbox" value=true [(ngModel)]="mh.is_sleep_problems" class="focus:ring-blue-500 h-4 w-4 text-blue-600  border-blue-300">
+                                                    <label for="is_sleep_problems" class="ml-3 block text-sm font-medium text-gray-400"> Dificultades para dormir </label>
+                                                </div>
+                                                <div class="flex items-center">
+                                                    <input id="is_dizziness" type="checkbox" value=true [(ngModel)]="mh.is_dizziness" class="focus:ring-blue-500 h-4 w-4 text-blue-600  border-blue-300">
+                                                    <label for="is_dizziness" class="ml-3 block text-sm font-medium text-gray-400"> Mareos y vértigos </label>
+                                                </div>
+                                                <div class="flex items-center">
+                                                    <input id="is_chest_pain" type="checkbox" value=true [(ngModel)]="mh.is_chest_pain" class="focus:ring-blue-500 h-4 w-4 text-blue-600  border-blue-300">
+                                                    <label for="is_chest_pain" class="ml-3 block text-sm font-medium text-gray-400"> Dolor en el pecho </label>
+                                                </div>
+
+                                            </div>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr class="border-1 border-blue-400  my-8">
+                            <h1 class="text-base font-medium leading-tight flex flex-nowrap mb-4 text-purple-900  cursor-pointer">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18.523" height="13.584" class="mr-2" viewBox="0 0 18.523 13.584">
+                                    <path id="Trazado_2916" data-name="Trazado 2916" d="M-691.52,189.967a2.122,2.122,0,0,1-.81,1.207,7.122,7.122,0,0,1-1.013.629,11.481,11.481,0,0,1-3.114.936,22.565,22.565,0,0,1-5.4.267,16.68,16.68,0,0,1-4.52-.849,6.871,6.871,0,0,1-1.675-.839A2.054,2.054,0,0,1-709,189.11a4.556,4.556,0,0,1,2.892-3.616l.146-.059a2.613,2.613,0,0,1-1.125-2.461,2.531,2.531,0,0,1,.908-1.708,2.639,2.639,0,0,1,3.6.212A2.649,2.649,0,0,1-703,185.43c.24.113.487.213.718.341s.44.281.659.424a1.964,1.964,0,0,1,2.654-.018l1.373-.764a2.645,2.645,0,0,1-.316-4.015,2.647,2.647,0,0,1,3.687.011,2.656,2.656,0,0,1-.368,4.032,4.652,4.652,0,0,1,1.315.721,4.5,4.5,0,0,1,1.725,3.094.512.512,0,0,0,.03.095Zm-12.06,2.176a3.353,3.353,0,0,1,2.049-3.053,1.976,1.976,0,0,1-.505-2.323,3.841,3.841,0,0,0-3.117-.826,3.873,3.873,0,0,0-3.165,3.313,1.158,1.158,0,0,0,.134.969,3.5,3.5,0,0,0,.682.634,7.473,7.473,0,0,0,2.513.989C-704.524,191.954-704.056,192.044-703.58,192.144Zm6.6-.023a.433.433,0,0,0,.062,0,14.013,14.013,0,0,0,2.614-.649,4.858,4.858,0,0,0,1.7-.961,1.057,1.057,0,0,0,.4-.785,3.77,3.77,0,0,0-1.194-2.762,3.767,3.767,0,0,0-3.286-1.029,3.635,3.635,0,0,0-1.838.833,2,2,0,0,1-.493,2.327A3.342,3.342,0,0,1-696.983,192.121Zm-5.579-8.857a1.922,1.922,0,0,0-1.923-1.926,1.922,1.922,0,0,0-1.931,1.919,1.927,1.927,0,0,0,1.932,1.937A1.926,1.926,0,0,0-702.562,183.264Zm6.488,1.93a1.927,1.927,0,0,0,1.929-1.919,1.923,1.923,0,0,0-1.925-1.937A1.921,1.921,0,0,0-698,183.254,1.926,1.926,0,0,0-696.074,185.193Zm-1.6,7.031a2.542,2.542,0,0,0-1.349-2.349,2.472,2.472,0,0,0-2.841.215,2.521,2.521,0,0,0-1.016,2.135A23.368,23.368,0,0,0-697.675,192.225Zm-1.362-4.619a1.24,1.24,0,0,0-1.234-1.245,1.24,1.24,0,0,0-1.253,1.226,1.244,1.244,0,0,0,1.234,1.262A1.244,1.244,0,0,0-699.037,187.605Z" transdiv="translate(709.544 -179.975)" fill="#542582" stroke="#542582" stroke-width="1"/>
+                                  </svg>
+                                <span>Antecedentes familiares</span>
+                            </h1>
+                            <p class="text-md-start text-sm leading-tight flex flex-nowrap text-gray-400 cursor-pointer">
+                                ¿En su grupo familiar presenta algunas de las siguientes enfermedades?
+                            </p>
+                            <div class="sm:col-span-1 ">
+                                <div class=" overflow-hidden">
+                                    <div class="  bg-white  ">
+                                        <fieldset>
+                                            <div class="mt-4 space-y-4 grid grid-cols-1 lg:grid-cols-4 " *ngFor="let fb of familyBackground">
+                                                <div class="flex items-center">
+                                                    <input id="is_cancer" type="checkbox" value=true [(ngModel)]="fb.is_cancer" class="focus:ring-blue-500 h-4 w-4 text-blue-600 border-blue-300">
+                                                    <label for="is_cancer" class="ml-3 block text-sm font-medium text-gray-400"> Cáncer </label>
+                                                </div>
+                                                <div class="flex items-center">
+                                                    <input id="is_ulcer" type="checkbox" value=true [(ngModel)]="fb.is_ulcer" class="focus:ring-blue-500 h-4 w-4 text-blue-600 border-blue-300">
+                                                    <label for="is_ulcer" class="ml-3 block text-sm font-medium text-gray-400"> Úlcera </label>
+                                                </div>
+                                                <div class="flex items-center">
+                                                    <input id="is_arterial_hypertension" type="checkbox" value=true [(ngModel)]="fb.is_arterial_hypertension" class="focus:ring-blue-500 h-4 w-4 text-blue-600 border-blue-300">
+                                                    <label for="is_arterial_hypertension" class="ml-3 block text-sm font-medium text-gray-400"> Hipertensión arterial </label>
+                                                </div>
+                                                <div class="flex items-center">
+                                                    <input id="is_headache" type="checkbox" value=true [(ngModel)]="fb.is_headache" class="focus:ring-blue-500 h-4 w-4 text-blue-600 border-blue-300">
+                                                    <label for="is_headache" class="ml-3 block text-sm font-medium text-gray-400"> Jaquecas  </label>
+                                                </div>
+                                                <div class="flex items-center">
+                                                    <input id="is_migraine" type="checkbox" value=true [(ngModel)]="fb.is_migraine" class="focus:ring-blue-500 h-4 w-4 text-blue-600 border-blue-300">
+                                                    <label for="is_migraine" class="ml-3 block text-sm font-medium text-gray-400"> Migrañas </label>
+                                                </div>
+                                                <div class="flex items-center">
+                                                    <input id="is_cholesterol" type="checkbox" value=true [(ngModel)]="fb.is_cholesterol" class="focus:ring-blue-500 h-4 w-4 text-blue-600 border-blue-300">
+                                                    <label for="is_cholesterol" class="ml-3 block text-sm font-medium text-gray-400"> Colesterol </label>
+                                                </div>
+                                                <div class="flex items-center">
+                                                    <input id="is_dermatitis" type="checkbox" value=true [(ngModel)]="fb.is_dermatitis" class="focus:ring-blue-500 h-4 w-4 text-blue-600 border-blue-300">
+                                                    <label for="is_dermatitis" class="ml-3 block text-sm font-medium text-gray-400"> Dermatitis </label>
+                                                </div>
+                                                <div class="flex items-center">
+                                                    <input id="is_diabetes" type="checkbox" value=true [(ngModel)]="fb.is_diabetes" class="focus:ring-blue-500 h-4 w-4 text-blue-600 border-blue-300">
+                                                    <label for="is_diabetes" class="ml-3 block text-sm font-medium text-gray-400"> Diabetes </label>
+                                                </div>
+                                                <div class="flex items-center">
+                                                    <input id="is_insomnia" type="checkbox" value=true [(ngModel)]="fb.is_insomnia" class="focus:ring-blue-500 h-4 w-4 text-blue-600 border-blue-300">
+                                                    <label for="is_insomnia" class="ml-3 block text-sm font-medium text-gray-400">Insomnio </label>
+                                                </div>
+                                                <div class="flex items-center">
+                                                    <input id="is_heart_attack" type="checkbox" value=true [(ngModel)]="fb.is_heart_attack" class="focus:ring-blue-500 h-4 w-4 text-blue-600 border-blue-300">
+                                                    <label for="is_heart_attack" class="ml-3 block text-sm font-medium text-gray-400"> Infarto </label>
+                                                </div>
+                                                <div class="flex items-center">
+                                                    <input id="is_back_pain" type="checkbox" value=true [(ngModel)]="fb.is_back_pain" class="focus:ring-blue-500 h-4 w-4 text-blue-600 border-blue-300">
+                                                    <label for="is_back_pain" class="ml-3 block text-sm font-medium text-gray-400"> Dolores de esplada </label>
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="px-4 py-3  text-center sm:px-6 my-3">
+                                <button type="button" (click)="SendMedicalHistory()" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-400 hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Guardar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<!-- LOADING SCREEN -->
+
+<div *ngIf="loading" wire:loading class="fixed top-0 left-0 right-0 bottom-0 w-full h-screen z-50 overflow-hidden bg-gray-700 opacity-75 flex flex-col items-center justify-center">
+    <div class="loader ease-linear rounded-full border-4 border-t-4 border-purple-200 h-12 w-12 mb-4"></div>
+    <h2 class="text-center text-white text-xl font-semibold">Estamos procesando y almacenando tus datos...</h2>
+    <p class="w-1/3 text-center text-white">Esto puede tomar varios segundos, porfavor no cierre ni refresque esta pantalla.</p>
+</div>
