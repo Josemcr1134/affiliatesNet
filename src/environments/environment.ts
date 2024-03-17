@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  base_url: 'https://pygfurughz.hidoctor.app',
+  base_url: 'https://pygfurughz.hidoctor.app/api',
   pub_wompi_test:'pub_test_0lFRLbzcrYKgi6AyL3qLBThez7I6KRki',
   redirect_url:'http://localhost:4200/Home/Dates/MyDates'
 
